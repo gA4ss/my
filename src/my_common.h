@@ -37,7 +37,7 @@ bool get_environment_variable(std::string &str, const char* environment_variable
 #define operand_is_nan_exception() { throw my::OperandIsNanException(__FILE__, __LINE__, __FUNCTION__); }
 #define operand_is_infinite_exception() { throw my::OperandIsInfiniteException(__FILE__, __LINE__, __FUNCTION__); }
 #define my_assert(exp, format, ...) { \
-  if (!(exp)) throw my::AssertException(__FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); \
+  if (!(static_cast<bool>(exp))) throw my::AssertException(__FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); \
 }
 
 } // namespace my
