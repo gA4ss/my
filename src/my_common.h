@@ -13,11 +13,11 @@
 #include <map>
 #include <algorithm>
 
-#include <my_compile.h>
-#include <my_error.h>
-#include <my_exception.h>
-#include <my_log.h>
-#include <my_uuid.h>
+#include <my/my_compile.h>
+#include <my/my_error.h>
+#include <my/my_exception.h>
+#include <my/my_log.h>
+#include <my/my_uuid.h>
 
 namespace my {
 
