@@ -17,6 +17,7 @@ set(SRC_DIRECTORY ./src)
 # My include path
 #
 include_directories(
+  ./
   ./src
 )
 
