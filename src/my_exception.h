@@ -10,6 +10,8 @@ class MyException : public std::exception {
 public:
   MyException();
   virtual const char * what () const throw ();
+
+  static std::string __make_info_prefix(const char* filepath, int lineno, const char* funcname);
 protected:
   std::string info_;
 };
@@ -22,21 +24,6 @@ public:
 class OutOfRangeException : public MyException {
 public:
   OutOfRangeException(const char* filepath, int lineno, const char* funcname);
-};
-
-class DivisorIsZeroException : public MyException {
-public:
-  DivisorIsZeroException(const char* filepath, int lineno, const char* funcname);
-};
-
-class OperandIsNanException : public MyException {
-public:
-  OperandIsNanException(const char* filepath, int lineno, const char* funcname);
-};
-
-class OperandIsInfiniteException : public MyException {
-public:
-  OperandIsInfiniteException(const char* filepath, int lineno, const char* funcname);
 };
 
 class AssertException : public MyException {

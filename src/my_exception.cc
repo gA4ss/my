@@ -24,8 +24,9 @@ namespace my {
  * std::range_error	        当尝试存储超出范围的值时，会抛出该异常。
  * std::underflow_error	    当发生数学下溢时，会抛出该异常。
  */
-
-static std::string __make_info_prefix(const char* filepath, int lineno, const char* funcname) {
+std::string MyException::__make_info_prefix(const char* filepath, 
+                                            int lineno, 
+                                            const char* funcname) {
   std::string title = "";
   if (filepath) {
     std::string filename = filepath;
@@ -43,35 +44,20 @@ static std::string __make_info_prefix(const char* filepath, int lineno, const ch
 }
 
 MyException::MyException() {
-  info_ = "Unknown Exception!!!";
+  info_ = "[my] ";
 }
 const char * MyException::what () const throw () {
   return info_.c_str();
 }
 
 InvalidArgumentsException::InvalidArgumentsException(const char* filepath, int lineno, const char* funcname) {
-  info_ = __make_info_prefix(filepath, lineno, funcname);
+  info_ += __make_info_prefix(filepath, lineno, funcname);
   info_ += "Invalid arguments.";
 }
 
 OutOfRangeException::OutOfRangeException(const char* filepath, int lineno, const char* funcname) {
-  info_ = __make_info_prefix(filepath, lineno, funcname);
+  info_ += __make_info_prefix(filepath, lineno, funcname);
   info_ += "Out of range.";
-}
-
-DivisorIsZeroException::DivisorIsZeroException(const char* filepath, int lineno, const char* funcname) {
-  info_ = __make_info_prefix(filepath, lineno, funcname);
-  info_ += "Divisor is 0.";
-}
-
-OperandIsNanException::OperandIsNanException(const char* filepath, int lineno, const char* funcname) {
-  info_ = __make_info_prefix(filepath, lineno, funcname);
-  info_ += "Operand is none.";
-}
-
-OperandIsInfiniteException::OperandIsInfiniteException(const char* filepath, int lineno, const char* funcname) {
-  info_ = __make_info_prefix(filepath, lineno, funcname);
-  info_ += "Operand is infinite.";
 }
 
 AssertException::AssertException(const char* filepath, int lineno, const char* funcname, const char* fmt, ...) {
@@ -84,7 +70,7 @@ AssertException::AssertException(const char* filepath, int lineno, const char* f
   vsprintf(buffer, fmt, args);
   va_end(args);
 
-  info_ = __make_info_prefix(filepath, lineno, funcname);
+  info_ += __make_info_prefix(filepath, lineno, funcname);
   info_ += buffer;
 }
 
