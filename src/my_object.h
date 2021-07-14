@@ -15,11 +15,7 @@ public:
   Object() : print_style_(kPrintStyleNormal), id_(uuid()) {}
   virtual ~Object() {}
 
-  virtual std::string str() { return ""; }
-  virtual std::string str() const { return ""; }
-
   void set_print_style(int ps=kPrintStyleNormal) { print_style_ = ps; }
-
   int get_print_style() { return print_style_; }
   int get_print_style() const { return print_style_; }
 
