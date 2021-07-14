@@ -37,6 +37,7 @@ set(MY_PUBLIC_HEADERS
   ${SRC_DIRECTORY}/my_exception.h
   ${SRC_DIRECTORY}/my_log.h
   ${SRC_DIRECTORY}/my_uuid.h
+  ${SRC_DIRECTORY}/my_object.h
 )
 
 #

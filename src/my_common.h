@@ -18,6 +18,7 @@
 #include <my/my_exception.h>
 #include <my/my_log.h>
 #include <my/my_uuid.h>
+#include <my/my_object.h>
 
 namespace my {
 
