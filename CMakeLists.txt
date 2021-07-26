@@ -4,6 +4,7 @@ project(my VERSION 1.0)
 # -g -O0 allows for gdb debugging
 # turn on -03 for best performance
 add_definitions(-std=c++11 -O3)
+#add_definitions(-std=c++11 -g -O0)
 
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "${CXX_FLAGS}")
