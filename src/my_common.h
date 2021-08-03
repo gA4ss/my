@@ -34,6 +34,9 @@ bool get_environment_variable(std::string &str, const char* environment_variable
 /////////////////////////////
 #define invalid_arguments_exception() { throw my::InvalidArgumentsException(__FILE__, __LINE__, __FUNCTION__); }
 #define out_of_range_exception() { throw my::OutOfRangeException(__FILE__, __LINE__, __FUNCTION__); }
+#define execute_error_exception(con,ecd) { throw mysym::core::ExecuteErrorException((con), (ecd), __FILE__, __LINE__, __FUNCTION__); }
+#define internal_execute_exception(con) { throw mysym::core::InternalExecuteException((con), __FILE__, __LINE__, __FUNCTION__); }
+
 #define my_assert(exp, format, ...) { \
   if (!(static_cast<bool>(exp))) throw my::AssertException(__FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); \
 }

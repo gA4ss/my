@@ -1,4 +1,4 @@
-#include <my_exception.h>
+#include <my/my_exception.h>
 
 #include <ctime>
 #include <cstdio>
@@ -58,6 +58,23 @@ InvalidArgumentsException::InvalidArgumentsException(const char* filepath, int l
 OutOfRangeException::OutOfRangeException(const char* filepath, int lineno, const char* funcname) {
   info_ += __make_info_prefix(filepath, lineno, funcname);
   info_ += "Out of range.";
+}
+
+ExecuteErrorException::ExecuteErrorException(const char* context, int errcode, 
+                                             const char* filepath, int lineno, const char* funcname) {
+  info_ += __make_info_prefix(filepath, lineno, funcname);
+  std::string s = std::string("Function execute \'") + 
+                  std::string(context) + std::string("\' return : \'") +
+                  std::to_string(errcode);
+                  std::string("\'.");
+  info_ += s;
+}
+
+InternalExecuteException::InternalExecuteException(const char* context,
+                                                   const char* filepath, int lineno, const char* funcname) {
+  info_ += __make_info_prefix(filepath, lineno, funcname);
+  std::string s = std::string("Internal execute \'") + std::string(context) + std::string("\' exception.");
+  info_ += s;
 }
 
 AssertException::AssertException(const char* filepath, int lineno, const char* funcname, const char* fmt, ...) {

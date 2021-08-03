@@ -26,6 +26,17 @@ public:
   OutOfRangeException(const char* filepath, int lineno, const char* funcname);
 };
 
+class ExecuteErrorException : public MyException {
+public:
+  ExecuteErrorException(const char* context, int errcode, 
+                        const char* filepath, int lineno, const char* funcname);
+};
+
+class InternalExecuteException : public MyException {
+public:
+  InternalExecuteException(const char* context, const char* filepath, int lineno, const char* funcname);
+};
+
 class AssertException : public MyException {
 public:
   AssertException(const char* filepath, int lineno, const char* funcname, const char* fmt, ...);
