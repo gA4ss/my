@@ -5,25 +5,15 @@
 
 namespace my {
 
-enum {
-  kPrintStyleNormal = 0,
-  kPrintSytleLatex = 1
-};
-
 class Object {
 public:
-  Object() : print_style_(kPrintStyleNormal), id_(uuid()) {}
+  Object() : id_(uuid()) {}
   virtual ~Object() {}
-
-  void set_print_style(int ps=kPrintStyleNormal) { print_style_ = ps; }
-  int get_print_style() { return print_style_; }
-  int get_print_style() const { return print_style_; }
 
   std::string id() { return id_; }
   std::string id() const { return id_; }
 
 protected:
-  int print_style_;
   std::string id_;
 };
 
