@@ -19,9 +19,13 @@
 #include <my/my_log.h>
 #include <my/my_uuid.h>
 #include <my/my_object.h>
+#include <my/my_type.h>
 
 namespace my {
 
+//////////////////////////////
+//         辅助函数         //
+/////////////////////////////
 void tokenize(std::string const& str, std::vector<std::string>& out, std::string delims=",\r\n\t ");
 std::string get_filename(std::string path);
 std::string get_real_path(const std::string& path);
