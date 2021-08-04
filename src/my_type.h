@@ -10,7 +10,13 @@ namespace my {
 /////////////////////////////
 typedef std::vector<Object*> params_t;
 typedef std::vector<Object*> returns_t;
-typedef returns_t (*fptr_internal)(const params_t&);
+typedef returns_t (*function_t)(const params_t&);
+
+//////////////////////////////
+//        内部变量定义        //
+//////////////////////////////
+typedef std::pair<std::string, Object*> variable_t;
+typedef std::vector<variable_t> variables_t;
 
 } // namespace my
 
