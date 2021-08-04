@@ -16,7 +16,6 @@ typedef returns_t (*function_t)(const params_t&);
 //        内部变量定义        //
 //////////////////////////////
 typedef std::pair<std::string, Object*> variable_t;
-typedef std::vector<variable_t> variables_t;
 
 } // namespace my
 
