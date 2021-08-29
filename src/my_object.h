@@ -13,6 +13,9 @@ public:
   std::string id() { return id_; }
   std::string id() const { return id_; }
 
+  // virtual const char* type_name() { return "my_object"; }
+  // virtual int type() { return 0; }
+
 protected:
   std::string id_;
 };
