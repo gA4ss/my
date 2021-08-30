@@ -60,7 +60,8 @@ add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/my_common.cc
   ${SRC_DIRECTORY}/my_log.cc
   ${SRC_DIRECTORY}/my_exception.cc
-  ${SRC_DIRECTORY}/my_uuid.cc)
+  ${SRC_DIRECTORY}/my_uuid.cc
+  ${SRC_DIRECTORY}/my_type.cc)
 target_link_libraries(${PROJECT_NAME} uuid)
 
 #
