@@ -5,7 +5,7 @@
 
 namespace my {
 
-#define kMyObjectId               0
+#define kMyObjectID               0
 
 class Object {
 public:
