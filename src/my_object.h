@@ -5,6 +5,8 @@
 
 namespace my {
 
+#define kMyObjectId               0
+
 class Object {
 public:
   Object() : id_(uuid()) {}
@@ -13,8 +15,8 @@ public:
   std::string id() { return id_; }
   std::string id() const { return id_; }
 
-  virtual const int class_type() { return 0; }
-  virtual const int class_type() const { return 0; }
+  virtual const int class_type() { return kMyObjectId; }
+  virtual const int class_type() const { return kMyObjectId; }
   virtual const char* class_name() { return "object"; }
   virtual const char* class_name() const { return "object"; }
 
