@@ -47,9 +47,9 @@ set(MY_PUBLIC_HEADERS
 #
 set(BUILD_TEST TRUE)
 if(BUILD_TEST)
-add_executable(test_my_uuid ${SRC_DIRECTORY}/test_my_uuid.cc ${SRC_DIRECTORY}/my_uuid.cc)
+add_executable(test_my_uuid ${SRC_DIRECTORY}/test/test_my_uuid.cc ${SRC_DIRECTORY}/my_uuid.cc)
 target_link_libraries(test_my_uuid uuid)
-add_executable(test_my_exception ${SRC_DIRECTORY}/test_my_exception.cc)
+add_executable(test_my_exception ${SRC_DIRECTORY}/test/test_my_exception.cc)
 target_link_libraries(test_my_exception my)
 endif(BUILD_TEST)
 

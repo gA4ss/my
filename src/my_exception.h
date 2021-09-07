@@ -9,37 +9,15 @@ namespace my {
 class MyException : public std::exception {
 public:
   MyException();
+  MyException(const char* type, 
+              const char* filepath, int lineno, const char* funcname, 
+              const char* fmt, ...);
   virtual const char * what () const throw ();
 
   static std::string __make_info_prefix(const char* filepath, int lineno, const char* funcname);
 protected:
   std::string info_;
-};
-
-class InvalidArgumentsException : public MyException {
-public:
-  InvalidArgumentsException(const char* filepath, int lineno, const char* funcname);
-};
-
-class OutOfRangeException : public MyException {
-public:
-  OutOfRangeException(const char* filepath, int lineno, const char* funcname);
-};
-
-class ExecuteErrorException : public MyException {
-public:
-  ExecuteErrorException(const char* context, int errcode, 
-                        const char* filepath, int lineno, const char* funcname);
-};
-
-class InternalExecuteException : public MyException {
-public:
-  InternalExecuteException(const char* context, const char* filepath, int lineno, const char* funcname);
-};
-
-class AssertException : public MyException {
-public:
-  AssertException(const char* filepath, int lineno, const char* funcname, const char* fmt, ...);
+  std::string type_;
 };
 
 //////////////////////////////////////////////////////////////////////

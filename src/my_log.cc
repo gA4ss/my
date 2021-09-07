@@ -51,6 +51,9 @@ int logger(int curr_level, const char* filepath,
   int ret = 0;
   va_list args;
   char buffer[2048] = {0};
+
+  if (!g_logger_runnning) return -1;
+
   //
   // FIXME : 没校验缓存长度,可能存在溢出
   //

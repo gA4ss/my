@@ -9,11 +9,12 @@
 #include <my_common.h>
 
 void foo() {
-  invalid_arguments_exception();
+  invalid_arguments_exception("%s", "a!=1");
   //my_assert(a==0, "%s", "haha!");
 }
 
 int main(int argc, char* argv[]) {
+  // my_assert(false, "%s", "never go here!!!");
   try {
     foo();
   } catch (my::MyException &e) {

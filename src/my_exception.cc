@@ -1,4 +1,5 @@
 #include <my/my_exception.h>
+#include <my/my_log.h>
 
 #include <ctime>
 #include <cstdio>
@@ -43,41 +44,10 @@ std::string MyException::__make_info_prefix(const char* filepath,
   return title;
 }
 
-MyException::MyException() {
-  info_ = "[my] ";
-}
-const char * MyException::what () const throw () {
-  return info_.c_str();
-}
-
-InvalidArgumentsException::InvalidArgumentsException(const char* filepath, int lineno, const char* funcname) {
-  info_ += __make_info_prefix(filepath, lineno, funcname);
-  info_ += "Invalid arguments.";
-}
-
-OutOfRangeException::OutOfRangeException(const char* filepath, int lineno, const char* funcname) {
-  info_ += __make_info_prefix(filepath, lineno, funcname);
-  info_ += "Out of range.";
-}
-
-ExecuteErrorException::ExecuteErrorException(const char* context, int errcode, 
-                                             const char* filepath, int lineno, const char* funcname) {
-  info_ += __make_info_prefix(filepath, lineno, funcname);
-  std::string s = std::string("Function execute \'") + 
-                  std::string(context) + std::string("\' return : \'") +
-                  std::to_string(errcode);
-                  std::string("\'.");
-  info_ += s;
-}
-
-InternalExecuteException::InternalExecuteException(const char* context,
-                                                   const char* filepath, int lineno, const char* funcname) {
-  info_ += __make_info_prefix(filepath, lineno, funcname);
-  std::string s = std::string("Internal execute \'") + std::string(context) + std::string("\' exception.");
-  info_ += s;
-}
-
-AssertException::AssertException(const char* filepath, int lineno, const char* funcname, const char* fmt, ...) {
+MyException::MyException() {}
+MyException::MyException(const char* type, 
+                         const char* filepath, int lineno, const char* funcname, 
+                         const char* fmt, ...) {
   va_list args;
   char buffer[2048] = {0};
   //
@@ -87,8 +57,23 @@ AssertException::AssertException(const char* filepath, int lineno, const char* f
   vsprintf(buffer, fmt, args);
   va_end(args);
 
+  type_ = type;
   info_ += __make_info_prefix(filepath, lineno, funcname);
+  info_ += "[";
+  info_ += type_;
+  info_ += " Exception]";
+  info_ += " \"";
   info_ += buffer;
+  info_ += "\"";
+
+  //
+  // 记录到日志
+  //
+  logger(MYLOG_LEVEL_FATAL, nullptr, 0, nullptr, "%s", info_.c_str());
+}
+
+const char * MyException::what () const throw () {
+  return info_.c_str();
 }
 
 } // namespace my

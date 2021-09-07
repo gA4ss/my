@@ -13,7 +13,7 @@ public:
   virtual ~Object() {}
 
   std::string id() const { return id_; }
-  virtual const int class_type() const { return kMyObjectId; }
+  virtual const int class_type() const { return kMyObjectID; }
   virtual const char* class_name() const { return "object"; }
 
 protected:
