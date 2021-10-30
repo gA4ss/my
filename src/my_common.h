@@ -42,6 +42,7 @@ bool get_environment_variable(std::string &str, const char* environment_variable
 #define out_of_range_exception(format, ...) { throw my::MyException("Out of Range", __FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); }
 #define execute_error_exception(format, ...) { throw my::MyException("Execute Error", __FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); }
 #define internal_execute_exception(format, ...) { throw my::MyException("Internal Execute", __FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); }
+#define xxx_can_not_convert_to_yyy_exception(xxx, yyy) { throw my::MyException("Type Convert", __FILE__, __LINE__, __FUNCTION__, "%s -> %s", (xxx), (yyy)); }
 
 #define my_assert(exp, format, ...) { \
   if (!(static_cast<bool>(exp))) throw my::MyException("Assert", __FILE__, __LINE__, __FUNCTION__, format, __VA_ARGS__); \
