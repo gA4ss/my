@@ -27,15 +27,6 @@ typedef enum {
   kBFloatT = 15
 } support_type_t;
 
-const std::string class_name(const char * name) {
-  int status = -1;
-  char* clear_name = abi::__cxa_demangle(name, NULL, NULL, &status);
-  const char * const  demangled_name = (status == 0) ? clear_name : name;
-  std::string ret_val(demangled_name);
-  free(clear_name);
-  return ret_val;
-}
-
 template <class T>
 std::string get_type_name() {
   return typeid(T).name();
