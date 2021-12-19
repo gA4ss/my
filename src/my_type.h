@@ -2,6 +2,7 @@
 #define MY_MY_TYPE_H_
 
 #include <my/my_object.h>
+#include <my/my_type.hpp>
 
 namespace my {
 
