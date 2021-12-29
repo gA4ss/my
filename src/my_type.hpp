@@ -62,9 +62,9 @@ support_type_t get_support_type() {
     r = kDoubleT;
   } else if (tn == "e") {
     r = kLDoubleT;
-  } else if (tn == "Integer") {
+  } else if (tn == "N5mynum7IntegerE") {
     r = kBIntegerT;
-  } else if (tn == "Float") {
+  } else if (tn == "N5mynum5FloatE") {
     r = kBFloatT;
   } else {
     r = kUnknownT;
