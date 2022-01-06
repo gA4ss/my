@@ -72,6 +72,16 @@ support_type_t get_support_type() {
   return r;
 }
 
+template <class T>
+bool __is_big_integer_type() {
+  return (get_support_type<T>() == kBIntegerT);
+}
+
+template <class T>
+bool __is_big_float_type() {
+  return (get_support_type<T>() == kBFloatT);
+}
+
 } // namespace my
 
 #endif // MY_MY_TYPE_HPP_
