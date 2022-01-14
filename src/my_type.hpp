@@ -23,9 +23,11 @@ typedef enum {
   kFloatT = 11,
   kDoubleT = 12,
   kLDoubleT = 13,
-  KStringT = 14,
-  kBIntegerT = 15,
-  kBFloatT = 16
+  KPointCharT = 14,
+  KCPointCharT = 15,
+  KStringT = 16,
+  kBIntegerT = 17,
+  kBFloatT = 18
 } support_type_t;
 
 template <class T>
@@ -39,6 +41,10 @@ support_type_t get_support_type() {
   std::string tn = get_type_name<T>();
   if (tn.find("string") != std::string::npos) {
     r = KStringT;
+  } else if (tn == "Pc") {
+    r = KPointCharT;
+  } else if (tn == "PKc") {
+    r = KCPointCharT;
   } else if (tn == "c") {
     r = kCharT;
   } else if (tn == "h") {

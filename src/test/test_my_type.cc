@@ -16,6 +16,8 @@ int main(int argc, char* argv[]) {
   std::cout << "unsigned long = " << my::get_support_type<unsigned long>() << std::endl;
   std::cout << "size_t = " << my::get_support_type<size_t>() << std::endl;
   std::cout << "std::string = " << my::get_support_type<std::string>() << std::endl;
-  // std::cout << my::get_type_name<std::string>() << std::endl;
+  std::cout << "const char* = " << my::get_support_type<const char*>() << std::endl;
+  std::cout << "char* = " << my::get_support_type<char*>() << std::endl;
+  // std::cout << my::get_type_name<char*>() << std::endl;
   return 0;
 }
