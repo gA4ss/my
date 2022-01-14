@@ -9,25 +9,27 @@
 namespace my {
 
 typedef enum {
-  kUnknownT = 0,
-  kCharT = 1,
-  kUCharT = 2,
-  kShortT = 3,
-  kUShortT = 4,
-  kIntT = 5,
-  kUIntT = 6,
-  kLongT = 7,
-  kULongT = 8,
-  kLongLongT = 9,
-  kULongLongT = 10,
-  kFloatT = 11,
-  kDoubleT = 12,
-  kLDoubleT = 13,
-  KPointCharT = 14,
-  KCPointCharT = 15,
-  KStringT = 16,
-  kBIntegerT = 17,
-  kBFloatT = 18
+  kCharT = 0,
+  kUCharT = 1,
+  kShortT = 2,
+  kUShortT = 3,
+  kIntT = 4,
+  kUIntT = 5,
+  kLongT = 6,
+  kULongT = 7,
+  kLongLongT = 8,
+  kULongLongT = 9,
+  kFloatT = 10,
+  kDoubleT = 11,
+  kLDoubleT = 12,
+  kStdTypeNumber = 13,
+  KPointCharT = 13,
+  KCPointCharT = 14,
+  KStringT = 15,
+  kBIntegerT = 16,
+  kBFloatT = 17,
+  kUnknownT = 18,
+  kTypeNumber = 19
 } support_type_t;
 
 template <class T>
