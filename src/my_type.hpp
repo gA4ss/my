@@ -93,6 +93,37 @@ bool __is_big_float_type() {
   return (get_support_type<T>() == kBFloatT);
 }
 
+template <class T>
+T to_std_type(const std::string& str, size_t *idx=nullptr, int base=10) {
+  T ret = 0;
+  support_type_t t = get_support_type<T>();
+  if (t == kUnknownT) {
+    invalid_arguments_exception("argument : %s will convert to unknown type.", 
+                                str.c_str());
+  }
+  if ((t == kCharT) || (t == kShortT) || (t == kIntT)) {
+    ret = std::stoi(str, idx);
+  } else if (t == kLongT) {
+    ret = std::stol(str, idx);
+  } else if (t == kLongLongT) {
+    ret = std::stoll(str, idx);
+  } else if (t == kFloatT) {
+    ret = std::stof(str, idx);
+  } else if (t == kDoubleT) {
+    ret = std::stod(str, idx);
+  } else if (t == kLDoubleT) {
+    ret = std::stold(str, idx);
+  } else if ((t == kUCharT) || (t == kUShortT) ||
+             (t == kUIntT) || (t == kULongT)) {
+    ret = static_cast<T>(std::stoul(str, idx));
+  } else if (t == kULongLongT) {
+    ret = std::stoull(str, idx);
+  } else { //if ((t == kBIntegerT) || (t == kBFloatT)) {
+    // ...
+  }
+  return ret;
+}
+
 } // namespace my
 
 #endif // MY_MY_TYPE_HPP_
