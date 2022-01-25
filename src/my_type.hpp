@@ -93,14 +93,21 @@ bool __is_big_float_type() {
   return (get_support_type<T>() == kBFloatT);
 }
 
+// 未知类型不做转换。
 template <class T>
 T to_std_type(const std::string& str, size_t *idx=nullptr, int base=10) {
-  T ret = 0;
+  T ret;
   support_type_t t = get_support_type<T>();
   if (t == kUnknownT) {
-    invalid_arguments_exception("argument : %s will convert to unknown type.", 
-                                str.c_str());
+    //
+    // FIXME : 这里可能存在问题。
+    //
+    return ret;
   }
+
+  //
+  // 进入正式的转换
+  //
   if ((t == kCharT) || (t == kShortT) || (t == kIntT)) {
     ret = std::stoi(str, idx);
   } else if (t == kLongT) {
