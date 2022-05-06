@@ -76,4 +76,8 @@ const char * MyException::what () const throw () {
   return info_.c_str();
 }
 
+const char * MyException::type() const {
+  return type_.c_str();
+}
+
 } // namespace my

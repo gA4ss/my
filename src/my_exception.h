@@ -13,6 +13,7 @@ public:
               const char* filepath, int lineno, const char* funcname, 
               const char* fmt, ...);
   virtual const char * what () const throw ();
+  virtual const char * type () const;
 
   static std::string __make_info_prefix(const char* filepath, int lineno, const char* funcname);
 protected:
