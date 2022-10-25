@@ -9,9 +9,9 @@ namespace my {
 //////////////////////////////
 //        统一原子类型       //
 /////////////////////////////
-typedef int64_t integer_t;
-typedef uint64_t uinteger_t;
-typedef long double float_t;
+// typedef int64_t integer_t;
+// typedef uint64_t uinteger_t;
+// typedef long double float_t;
 
 //////////////////////////////
 //        内部函数指针       //

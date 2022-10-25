@@ -29,7 +29,7 @@ static void _log_on_level(int curr_level, const char* buf) {
   else if (curr_level == MYLOG_LEVEL_ERROR) prefix = "[error]";
   else if (curr_level == MYLOG_LEVEL_FATAL) prefix = "[fatal]";
   else if (curr_level == MYLOG_LEVEL_DEBUG) prefix = "[debug]";
-  else prefix = ""; 
+  else prefix = "";
 
   if (curr_level <= g_debug_level) {
     if (g_debug_type == MYLOG_TYPE_FILE) {
