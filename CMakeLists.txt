@@ -37,10 +37,7 @@ set(MY_PUBLIC_HEADERS
   ${SRC_DIRECTORY}/my_error.h
   ${SRC_DIRECTORY}/my_exception.h
   ${SRC_DIRECTORY}/my_log.h
-  ${SRC_DIRECTORY}/my_uuid.h
-  ${SRC_DIRECTORY}/my_object.h
-  ${SRC_DIRECTORY}/my_type.h
-  ${SRC_DIRECTORY}/my_type.hpp
+  ${SRC_DIRECTORY}/my_debug.h
 )
 
 #
@@ -48,12 +45,8 @@ set(MY_PUBLIC_HEADERS
 #
 set(BUILD_TEST TRUE)
 if(BUILD_TEST)
-add_executable(test_my_uuid ${SRC_DIRECTORY}/test/test_my_uuid.cc ${SRC_DIRECTORY}/my_uuid.cc)
-target_link_libraries(test_my_uuid uuid)
-add_executable(test_my_type ${SRC_DIRECTORY}/test/test_my_type.cc)
-target_link_libraries(test_my_type my)
-add_executable(test_my_exception ${SRC_DIRECTORY}/test/test_my_exception.cc)
-target_link_libraries(test_my_exception my)
+# add_executable(test_my_exception ${SRC_DIRECTORY}/test/test_my_exception.cc)
+# target_link_libraries(test_my_exception my)
 endif(BUILD_TEST)
 
 #
@@ -63,8 +56,7 @@ add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/my_common.cc
   ${SRC_DIRECTORY}/my_log.cc
   ${SRC_DIRECTORY}/my_exception.cc
-  ${SRC_DIRECTORY}/my_uuid.cc
-  ${SRC_DIRECTORY}/my_type.cc)
+  ${SRC_DIRECTORY}/my_debug.cc)
 target_link_libraries(${PROJECT_NAME} uuid)
 
 #

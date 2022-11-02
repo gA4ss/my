@@ -19,9 +19,7 @@
 #include <my/my_error.h>
 #include <my/my_exception.h>
 #include <my/my_log.h>
-#include <my/my_uuid.h>
-#include <my/my_object.h>
-#include <my/my_type.h>
+#include <my/my_debug.h>
 
 namespace my {
 
