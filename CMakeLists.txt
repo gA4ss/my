@@ -38,6 +38,7 @@ set(MY_PUBLIC_HEADERS
   ${SRC_DIRECTORY}/my_exception.h
   ${SRC_DIRECTORY}/my_log.h
   ${SRC_DIRECTORY}/my_debug.h
+  ${SRC_DIRECTORY}/my_input.h
 )
 
 #
@@ -56,8 +57,16 @@ add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/my_common.cc
   ${SRC_DIRECTORY}/my_log.cc
   ${SRC_DIRECTORY}/my_exception.cc
+  ${SRC_DIRECTORY}/my_input.cc
   ${SRC_DIRECTORY}/my_debug.cc)
 target_link_libraries(${PROJECT_NAME} uuid)
+
+# set(RESEARCH TRUE)
+# if(RESEARCH)
+# message(STATUS "compile research codes.")
+add_executable(test_regex test/test_regex.cc)
+target_link_libraries(test_regex gtest pthread my)
+# endif(RESEARCH)
 
 #
 # Enable Test
