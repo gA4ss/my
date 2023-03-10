@@ -14,10 +14,10 @@ namespace my
   {
     if (is_variate(s))
       return kStrTypeVar;
-    else if (is_dec_integer(s))
-      return kStrTypeDecInt;
-    else if (is_hex_integer(s))
-      return kStrTypeHexInt;
+    // else if (is_dec_integer(s))
+    //   return kStrTypeDecInt;
+    // else if (is_hex_integer(s))
+    //   return kStrTypeHexInt;
     else if (is_integer(s))
       return kStrTypeInt;
     else if (is_real(s))
