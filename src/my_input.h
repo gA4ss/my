@@ -11,7 +11,8 @@ namespace my {
 #define kStrTypeHexInt  3
 #define kStrTypeReal    4
 #define kStrTypeInt     5
-#define kStrTypeNum     6
+#define kStrTypeFrac    6
+#define kStrTypeNum     7
 
 int type_of_string(std::string s);
 bool is_variate(std::string s);
@@ -19,6 +20,7 @@ bool is_dec_integer(std::string s);
 bool is_hex_integer(std::string s);
 bool is_integer(std::string s);
 bool is_real(std::string s);
+bool is_fraction(std::string s);
 bool is_number(std::string s);
 
 } // namespace my

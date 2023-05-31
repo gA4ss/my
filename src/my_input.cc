@@ -9,19 +9,18 @@ namespace my
   static std::regex __r_dec_int("^-?[0-9]+$");
   static std::regex __r_hex_int("^-?([xX]?|0[xX]?)[0-9a-fA-F]+$");
   static std::regex __r_real("^-?([1-9]*\\.[0-9]*|0\\.[1-9]+|0?\\.0+|0)$");
+  static std::regex __r_frac("^-?([0-9]+)/([0-9]+)$");
 
   int type_of_string(std::string s)
   {
     if (is_variate(s))
       return kStrTypeVar;
-    // else if (is_dec_integer(s))
-    //   return kStrTypeDecInt;
-    // else if (is_hex_integer(s))
-    //   return kStrTypeHexInt;
     else if (is_integer(s))
       return kStrTypeInt;
     else if (is_real(s))
       return kStrTypeReal;
+    else if (is_fraction(s))
+      return kStrTypeFrac;
     return kStrTypeErr;
   }
 
@@ -50,9 +49,14 @@ namespace my
     return is_dec_integer(s) || is_hex_integer(s);
   }
 
+  bool is_fraction(std::string s)
+  {
+    return std::regex_match(s, __r_frac);
+  }
+
   bool is_number(std::string s)
   {
-    return is_integer(s) || is_real(s);
+    return is_integer(s) || is_real(s) || is_fraction(s);
   }
 
 } // namespace my

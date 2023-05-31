@@ -8,7 +8,7 @@
 
 using namespace std;
 
-TEST(Sym, Input)
+TEST(My, Input)
 {
   EXPECT_TRUE(my::is_integer("5"));
   EXPECT_TRUE(my::is_integer("-4"));
@@ -27,7 +27,19 @@ TEST(Sym, Input)
   EXPECT_TRUE(my::is_variate("__x1"));
   EXPECT_FALSE(my::is_variate("5x"));
   EXPECT_FALSE(my::is_variate(".x"));
+  EXPECT_TRUE(my::is_fraction("-1/5"));
+  EXPECT_FALSE(my::is_fraction("-a/5"));
   EXPECT_EQ(my::type_of_string("85xyz."), kStrTypeErr);
+}
+
+TEST(My, Frac)
+{
+  EXPECT_EQ(my::type_of_string("512/321"), kStrTypeFrac);
+  EXPECT_TRUE(my::is_fraction("1/2"));
+  EXPECT_TRUE(my::is_fraction("3/4"));
+  EXPECT_FALSE(my::is_fraction("212/a"));
+  EXPECT_TRUE(my::is_fraction("632/321"));
+  EXPECT_TRUE(my::is_fraction("-1321/321"));
 }
 
 // TEST(Sym, Regex)
