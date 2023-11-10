@@ -1,10 +1,14 @@
 cmake_minimum_required (VERSION 3.5)
 project(my VERSION 1.0)
 
-# -g -O0 allows for gdb debugging
-# turn on -03 for best performance
-add_definitions(-std=c++11 -O3)
-#add_definitions(-std=c++11 -g -O0)
+# set(DEBUG 1)
+if(DEBUG)
+message(STATUS "compile debug version.")
+add_definitions(-std=c++11 -g -O0 -DDEBUG -Wunused-variable)
+else()
+message(STATUS "compile release version.")
+add_definitions(-std=c++11 -O3 -Wunused-variable)
+endif(DEBUG)
 
 set(CXX_FLAGS "-Wall")
 set(CMAKE_CXX_FLAGS "${CXX_FLAGS}")
