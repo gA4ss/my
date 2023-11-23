@@ -14,6 +14,8 @@
 #include <set>
 #include <map>
 #include <algorithm>
+#include <iostream>
+#include <sstream>
 
 #include <my/my_compile.h>
 #include <my/my_error.h>
@@ -33,6 +35,8 @@ std::string get_real_path(const std::string& path);
 size_t get_filesize(std::string path);
 int read_file(std::string path, std::string& txt);
 bool get_environment_variable(std::string &str, const char* environment_variable);
+std::string str_to_hex(const std::string& data, bool bigcase=false);
+std::string hex_to_str(const std::string& str);
 
 //////////////////////////////
 //         异常函数         //

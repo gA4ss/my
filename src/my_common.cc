@@ -80,4 +80,27 @@ bool get_environment_variable(std::string &str, const char* environment_variable
   }
 }
 
+std::string str_to_hex(const std::string& data, bool bigcase)
+{
+  const std::string hex = !bigcase ? "0123456789abcdef" : "0123456789ABCDEF";
+  std::stringstream ss;
+
+  for (std::string::size_type i = 0; i < data.size(); ++i)
+    ss << hex[(unsigned char)data[i] >> 4] << hex[(unsigned char)data[i] & 0xf];
+  // std::cout << ss.str() << std::endl;
+  return ss.str();
+}
+
+std::string hex_to_str(const std::string& str)
+{
+  std::string result;
+  for (size_t i = 0; i < str.length(); i += 2)
+  {
+    std::string byte = str.substr(i, 2);
+    char chr = (char)(int)strtol(byte.c_str(), nullptr, 16);
+    result.push_back(chr);
+  }
+  return result;
+}
+
 } // namespace my
