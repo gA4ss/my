@@ -70,6 +70,10 @@ target_link_libraries(${PROJECT_NAME} uuid)
 # message(STATUS "compile research codes.")
 add_executable(test_regex test/test_regex.cc)
 target_link_libraries(test_regex gtest pthread my)
+add_executable(test_str test/test_str.cc)
+target_link_libraries(test_str gtest pthread my)
+add_executable(test_file test/test_file.cc)
+target_link_libraries(test_file gtest pthread my)
 # endif(RESEARCH)
 
 #

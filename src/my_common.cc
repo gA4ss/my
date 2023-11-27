@@ -61,6 +61,27 @@ int read_file(std::string path, std::string& txt) {
   return ERROR_SUCCEE;
 }
 
+int read_file(std::string path, unsigned char **buffer, size_t *osize)
+{
+  if (!buffer)
+    return ERROR_FAILED;
+  std::string apath = get_real_path(path);
+  std::fstream in(apath, std::ios::in | std::ios::binary | std::ios::ate);  
+  if (!in.is_open()) {
+    return ERROR_OPEN_FILE;
+  }
+
+  size_t size = in.tellg();
+  *buffer = new unsigned char [size+1];
+  assert(*buffer);
+  memset(*buffer, 0, size+1);
+  in.seekg(0, std::ios::beg);
+  in.read ((char*)*buffer, size);
+  in.close();
+  if (osize) *osize = size;
+  return ERROR_SUCCEE;
+}
+
 bool get_environment_variable(std::string &str, const char* environment_variable) {
   char* env_var_cstr = NULL;
 #ifdef _MSC_VER

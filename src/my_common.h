@@ -34,6 +34,7 @@ std::string get_filename(std::string path);
 std::string get_real_path(const std::string& path);
 size_t get_filesize(std::string path);
 int read_file(std::string path, std::string& txt);
+int read_file(std::string path, unsigned char *buf, size_t *osize);
 bool get_environment_variable(std::string &str, const char* environment_variable);
 std::string str_to_hex(const std::string& data, bool bigcase=false);
 std::string hex_to_str(const std::string& str);
