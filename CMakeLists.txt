@@ -23,7 +23,6 @@ set(SRC_DIRECTORY ./src)
 #
 include_directories(
   ./
-  ./src
 )
 
 #
@@ -39,6 +38,7 @@ set(MY_PUBLIC_HEADERS
   ${SRC_DIRECTORY}/my_common.h
   ${SRC_DIRECTORY}/my_compile.h
   ${SRC_DIRECTORY}/my_error.h
+  ${SRC_DIRECTORY}/my_object.h
   ${SRC_DIRECTORY}/my_exception.h
   ${SRC_DIRECTORY}/my_log.h
   ${SRC_DIRECTORY}/my_debug.h
@@ -60,6 +60,7 @@ endif(BUILD_TEST)
 add_library(${PROJECT_NAME} STATIC
   ${SRC_DIRECTORY}/my_common.cc
   ${SRC_DIRECTORY}/my_log.cc
+  ${SRC_DIRECTORY}/my_object.cc
   ${SRC_DIRECTORY}/my_exception.cc
   ${SRC_DIRECTORY}/my_input.cc
   ${SRC_DIRECTORY}/my_debug.cc)
@@ -74,6 +75,9 @@ add_executable(test_str test/test_str.cc)
 target_link_libraries(test_str gtest pthread my)
 add_executable(test_file test/test_file.cc)
 target_link_libraries(test_file gtest pthread my)
+add_executable(test_exception test/test_exception.cc)
+target_link_libraries(test_exception my)
+
 # endif(RESEARCH)
 
 #

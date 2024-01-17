@@ -4,10 +4,9 @@
 //
 // OS
 //
-#define OS_LINUX                    1
-//#define OS_WINDOWS                  1
-//#define OS_MAC                      1
-
+#define OS_LINUX 1
+// #define OS_WINDOWS                  1
+// #define OS_MAC                      1
 
 //
 // DEBUG ENABLE
