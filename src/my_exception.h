@@ -29,6 +29,9 @@ namespace my
     MyException();
     MyException(const char *type,
                 const char *filepath, int lineno, const char *funcname,
+                const char *fmt, ...);
+    MyException(const char *type,
+                const char *filepath, int lineno, const char *funcname,
                 except_object_ptrs_t except_object_ptrs,
                 const char *fmt, ...);
     virtual const char *what() const throw();

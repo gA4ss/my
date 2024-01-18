@@ -83,6 +83,34 @@ namespace my
   MyException::MyException() {}
   MyException::MyException(const char *type,
                            const char *filepath, int lineno, const char *funcname,
+                           const char *fmt, ...)
+  {
+    va_list args;
+    char buffer[2048] = {0};
+    //
+    // FIXME : 没校验缓存长度,可能存在溢出
+    //
+    va_start(args, fmt);
+    vsprintf(buffer, fmt, args);
+    va_end(args);
+
+    type_ = type;
+    info_ += __make_info_prefix(filepath, lineno, funcname);
+    info_ += "[";
+    info_ += type_;
+    info_ += "]";
+    // info_ += " Exception]";
+    info_ += " \"";
+    info_ += buffer;
+    info_ += "\"";
+
+    //
+    // 记录到日志
+    //
+    logger(MYLOG_LEVEL_FATAL, nullptr, 0, nullptr, "%s", info_.c_str());
+  }
+  MyException::MyException(const char *type,
+                           const char *filepath, int lineno, const char *funcname,
                            except_object_ptrs_t except_object_ptrs,
                            const char *fmt, ...)
   {
@@ -111,11 +139,8 @@ namespace my
     logger(MYLOG_LEVEL_FATAL, nullptr, 0, nullptr, "%s", info_.c_str());
 
     //
-    // 检查type是否可以找到，如果找到是否能有异常处理函数。
+    // 记录异常对象
     //
-    // if (__exception_handles.find(type_) != __exception_handles.end())
-    //   __exception_handles[type_](*this);
-
     except_object_ptrs_ = except_object_ptrs;
   }
 
