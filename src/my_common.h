@@ -23,6 +23,7 @@
 #include <my/my_log.h>
 #include <my/my_debug.h>
 #include <my/my_input.h>
+#include <my/my_global.h>
 
 namespace my
 {

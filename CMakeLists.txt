@@ -42,6 +42,7 @@ set(MY_PUBLIC_HEADERS
   ${SRC_DIRECTORY}/my_exception.h
   ${SRC_DIRECTORY}/my_log.h
   ${SRC_DIRECTORY}/my_debug.h
+  ${SRC_DIRECTORY}/my_global.h
   ${SRC_DIRECTORY}/my_input.h
 )
 
